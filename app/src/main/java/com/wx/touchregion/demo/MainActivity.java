@@ -1,4 +1,4 @@
-package com.wx.touchregion;
+package com.wx.touchregion.demo;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.wx.touchregion.TouchRegion;
 
 public class MainActivity extends AppCompatActivity {
 

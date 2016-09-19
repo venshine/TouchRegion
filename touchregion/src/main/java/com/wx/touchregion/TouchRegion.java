@@ -33,6 +33,10 @@ public class TouchRegion {
         touchDelegateGroup = new TouchDelegateGroup(viewGroup);
     }
 
+    public TouchRegion(View view) {
+        touchDelegateGroup = new TouchDelegateGroup((View) view.getParent());
+    }
+
     /**
      * 扩大View的触摸和点击范围，最大不超过其父View范围
      *

@@ -71,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
             if (convertView == null) {
                 holder = new ViewHolder();
                 convertView = inflate.inflate(R.layout.item, null);
-                holder.layout = (LinearLayout) convertView.findViewById(R.id.layout);
                 holder.tv = (TextView) convertView.findViewById(R.id.textview);
                 holder.btn = (ImageView) convertView.findViewById(R.id.button);
                 convertView.setTag(holder);
@@ -80,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             }
             holder.tv.setText("text" + position);
 
-            TouchRegion touchRegion = new TouchRegion(holder.layout);
+            TouchRegion touchRegion = new TouchRegion(holder.tv);
             touchRegion.expandViewTouchRegion(holder.tv, 100, 50, 100, 20);
             touchRegion.expandViewTouchRegion(holder.btn, 200, 50, 200, 20);
 
@@ -88,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         class ViewHolder {
-            LinearLayout layout;
             TextView tv;
             ImageView btn;
         }

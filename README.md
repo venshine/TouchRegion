@@ -1,5 +1,16 @@
 # TouchRegion
-增大触摸点击区域
+
+[![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=14)
+
+
+Scene
+--
+1. View整体尺寸小，点击区域小，需要点击很多次才能选中；
+2. 通过设置View的padding属性增大View的点击区域；
+3. 通过设置View的父类点击事件实现点击效果；
+4. 通过给View增加父类，实现点击效果。  
+
+如果你有遇到过以上几点，那么[TouchRegion](https://github.com/venshine/TouchRegion)项目将会方便地帮助你实现扩大View的触摸和点击区域。
 
 ScreenShot
 --

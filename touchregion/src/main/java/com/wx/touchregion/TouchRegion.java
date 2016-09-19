@@ -29,10 +29,20 @@ public class TouchRegion {
 
     private TouchDelegateGroup touchDelegateGroup;
 
+    /**
+     * 构造方法
+     *
+     * @param viewGroup 触摸view的父类
+     */
     public TouchRegion(ViewGroup viewGroup) {
         touchDelegateGroup = new TouchDelegateGroup(viewGroup);
     }
 
+    /**
+     * 构造方法
+     *
+     * @param view 触摸view
+     */
     public TouchRegion(View view) {
         touchDelegateGroup = new TouchDelegateGroup((View) view.getParent());
     }

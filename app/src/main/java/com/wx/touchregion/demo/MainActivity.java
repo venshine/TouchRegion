@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         mListView.setAdapter(new MyAdapter(this));
 
         TouchRegion touchRegion = new TouchRegion(mLayout);
-        touchRegion.expandViewTouchRegion(mButton1, 300, 100, 300, 100);
+        touchRegion.expandViewTouchRegion(mButton1, 300);
         touchRegion.expandViewTouchRegion(mButton2, 500, 100, 500, 100);
 
     }

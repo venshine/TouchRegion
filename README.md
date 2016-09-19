@@ -10,7 +10,7 @@ Scene
 3. 通过设置View的父类点击事件实现点击效果；
 4. 通过给View增加父类，实现点击效果。  
 
-如果你有遇到过以上几点，那么[TouchRegion](https://github.com/venshine/TouchRegion)项目将会方便地帮助你实现扩大View的触摸和点击区域。
+如果你遇到过以上问题，[TouchRegion](https://github.com/venshine/TouchRegion)将会方便地帮助你实现扩大View的触摸和点击区域。
 
 ScreenShot
 --

@@ -36,8 +36,7 @@ Use the TouchRegion as a Utils, Java are supported.
 | method 方法          | description 描述 |
 |:---				 |:---|
 | void **expandViewTouchRegion**(View view, int margin)  	     | 扩大View的触摸和点击范围，最大不超过其父View范围 |
-| void **expandViewTouchRegion**(final View view, final int left, final int top, final int right
-                                            , final int bottom)  	     | 扩大View的触摸和点击范围，最大不超过其父View范围 |
+| void **expandViewTouchRegion**(final View view, final int left, final int top, final int right, final int bottom) | 扩大View的触摸和点击范围，最大不超过其父View范围 |
 | void **restoreViewTouchRegion**(final View view) 	     | 恢复View的触摸和点击范围，最小不小于View自身范围 |
 
 

@@ -1,60 +1,112 @@
 # TouchRegion
 
-[![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=14)
+English | [简体中文](README-CN.md)
 
+[![JitPack](https://jitpack.io/v/venshine/TouchRegion.svg)](https://jitpack.io/#venshine/TouchRegion)  [![CI](https://github.com/venshine/TouchRegion/actions/workflows/ci.yml/badge.svg)](https://github.com/venshine/TouchRegion/actions/workflows/ci.yml)  [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels)
 
-Scene
+Enlarge the touch and click area of small views. Written in Kotlin, no dependencies besides the Kotlin standard library.
+
+## Screenshot
+
+| Light | Dark |
+|:---:|:---:|
+| <img src="screenshot/touch-region-light.png" width="240" alt="TouchRegion" /> | <img src="screenshot/touch-region-dark.png" width="240" alt="TouchRegion" /> |
+
+Screenshots are rendered by Robolectric.
+
+Do you need it?
 --
-1. View整体尺寸小，点击区域小，需要点击很多次才能选中；
-2. 通过设置View的padding属性增大View的点击区域；
-3. 通过设置View的父类点击事件实现点击效果；
-4. 通过给View增加父类，实现点击效果。  
+For **a single view**, the platform already has what you need: [`TouchDelegate`](https://developer.android.com/reference/android/view/TouchDelegate) on the parent, or simply larger padding / `minWidth` / `minHeight` on the view.
 
-如果你遇到过以上问题，[TouchRegion](https://github.com/venshine/TouchRegion)将会方便地帮助你实现扩大View点击区域的功能。
+The catch is that a view group has only **one** touch delegate (`View.setTouchDelegate`). TouchRegion's value is a `TouchDelegateGroup` that dispatches to many delegates, so **several children of the same parent can all get a larger click area**. It also computes the area at touch time, so it follows layout changes and ignores children that are hidden or removed (a plain `TouchDelegate` keeps the rectangle from when it was created).
 
-ScreenShot
---
-![](https://github.com/venshine/TouchRegion/blob/master/screenshot/screenshot.gif)
+Accessibility guidance recommends touch targets of at least **48dp x 48dp**. Prefer fixing that in the layout when you can; use TouchRegion when the visual size must stay small.
 
 Usage
 --
 ##### Gradle:
+1. Add the JitPack repository to `settings.gradle`:
 ```groovy
-compile 'com.wx.touchregion:touchregion:1.0.0'
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = 'https://jitpack.io' }
+    }
+}
 ```
+2. Add the dependency to your module's `build.gradle`:
+```groovy
+implementation 'com.github.venshine:TouchRegion:2.0.0'
+```
+
+##### Gradle Kotlin DSL:
+```kotlin
+// settings.gradle.kts
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+        maven("https://jitpack.io")
+    }
+}
+
+// build.gradle.kts
+implementation("com.github.venshine:TouchRegion:2.0.0")
+```
+
+> Since 2.0.0 the library is written in Kotlin and published via JitPack. The old coordinate `com.wx.touchregion:touchregion` can no longer be downloaded.
 
 Demo
 --
-Use the TouchRegion as a Utils, Java are supported.
+The package name is still `com.wx.touchregion`. The [sample app](sample) enlarges two 24dp dots with one `TouchRegion`, with a switch to turn it off and a button to hide a dot; it supports light and dark themes.
+
+##### Kotlin:
+```kotlin
+val touchRegion = TouchRegion(parentLayout)          // the common parent of the views
+val margin = (16 * resources.displayMetrics.density).toInt()
+touchRegion.expandViewTouchRegion(button1, margin)   // 16dp on every side
+touchRegion.expandViewTouchRegion(button2, 40, 8, 40, 8)  // left, top, right, bottom in px
+touchRegion.restoreViewTouchRegion(button1)          // back to its own size
+```
 
 ##### Java:
-```Java
-    public class MainActivity extends Activity {
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main)
-
-            TouchRegion touchRegion = new TouchRegion(mLayout); // 传入父类引用
-            touchRegion.expandViewTouchRegion(mButton1, 300);   // 设置button1扩大300px点击区域
-            touchRegion.expandViewTouchRegion(mButton2, 500, 100, 500, 100);    // 设置button2扩大(ltrt:500,100,500,100)点击区域
-
-        }
-    }
+```java
+TouchRegion touchRegion = new TouchRegion(parentLayout);
+touchRegion.expandViewTouchRegion(button1, 300);
+touchRegion.expandViewTouchRegion(button2, 500, 100, 500, 100);
 ```
 
 ##### Methods:
-| method 方法          | description 描述 |
-|:---				 |:---|
-| void **expandViewTouchRegion**(View view, int margin)  	     | 扩大View的触摸和点击范围，最大不超过其父View范围 |
-| void **expandViewTouchRegion**(final View view, final int left, final int top, final int right, final int bottom) | 扩大View的触摸和点击范围，最大不超过其父View范围 |
-| void **restoreViewTouchRegion**(final View view) 	     | 恢复View的触摸和点击范围，最小不小于View自身范围 |
+| method | description |
+|:---|:---|
+| `TouchRegion(ViewGroup parent)` | Create a region helper for the children of `parent` |
+| `TouchRegion(View child)` | Same, using the parent of `child` (it must already be attached; otherwise `IllegalArgumentException`) |
+| `expandViewTouchRegion(View view, int margin)` | Enlarge by `margin` px on every side |
+| `expandViewTouchRegion(View view, int left, int top, int right, int bottom)` | Enlarge by a different amount per side (px) |
+| `restoreViewTouchRegion(View view)` | Back to the view's own bounds |
 
+Notes:
+* `view` must be a direct child of the parent given to `TouchRegion`; otherwise `IllegalArgumentException`.
+* Calling `expandViewTouchRegion` again for the same view replaces the earlier margins.
+* The area never extends beyond the parent, because touches outside the parent never reach it.
+* Where the areas of two children overlap, the one that was enlarged first gets the touch.
+* `TouchDelegateGroup` is public: `addTouchDelegate`, `removeTouchDelegate`, `clearTouchDelegates`. You can use it alone to combine ordinary `TouchDelegate`s.
 
-About
+Migrating from 1.x
 --
-* Email：venshine.cn@gmail.com
+* **Coordinate**: `com.wx.touchregion:touchregion:1.0.0` becomes `com.github.venshine:TouchRegion:2.0.0`; `minSdk` is now 21.
+* `expandViewTouchRegion` takes effect immediately. 1.x applied it with `post` after layout and computed the area once.
+* `restoreViewTouchRegion` now really restores. In 1.x it added an empty delegate behind the enlarged one, which did nothing.
+* Expanding the same view twice replaces the first margins instead of stacking up.
+* The area follows the view when its layout changes, and hidden (`INVISIBLE` / `GONE`) or removed views no longer receive touches.
+* `expandViewTouchRegion` no longer calls `view.setEnabled(true)` as a side effect.
+* The view passed to `expandViewTouchRegion` must be a direct child of the parent given to the constructor. Other views used to be accepted and misbehaved.
+* The javadoc of 1.x listed the margin order as top, bottom, left, right; the real order was and is left, top, right, bottom.
 
+Status
+--
+Maintained on a best-effort basis. Not yet verified on a real device with the 2.0.0 rewrite; the behavior is covered by Robolectric unit tests that dispatch real touch events.
 
 License
 --
@@ -71,4 +123,3 @@ License
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
-

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TouchRegion</string>
+    <string name="title">TouchRegion 2.0</string>
+    <string name="intro">Both dots are only 24dp wide. With the switch on, each one also reacts to taps within 40dp around it. Accessibility guidance recommends a touch target of at least 48dp.</string>
+    <string name="expand_switch">Expand touch regions</string>
+    <string name="hide_b">Hide dot B</string>
+    <string name="show_b">Show dot B</string>
+    <string name="clicks">Dot A: %1$d / Dot B: %2$d</string>
+</resources>

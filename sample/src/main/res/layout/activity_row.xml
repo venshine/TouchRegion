@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/page_padding"
+        android:paddingTop="16dp"
+        android:paddingEnd="@dimen/page_padding"
+        android:paddingBottom="24dp">
+
+        <include layout="@layout/include_toolbar" />
+
+        <com.wx.touchregion.demo.ZoneLayout
+            android:id="@+id/row_host"
+            style="@style/Card"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/icon_heart"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="0dp"
+                android:contentDescription="@string/icon_heart"
+                android:src="@drawable/ic_heart" />
+
+            <ImageView
+                android:id="@+id/icon_star"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="24dp"
+                android:contentDescription="@string/icon_star"
+                android:src="@drawable/ic_star" />
+
+            <ImageView
+                android:id="@+id/icon_bell"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="24dp"
+                android:contentDescription="@string/icon_bell"
+                android:src="@drawable/ic_bell" />
+
+            <ImageView
+                android:id="@+id/icon_bookmark"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="24dp"
+                android:contentDescription="@string/icon_bookmark"
+                android:src="@drawable/ic_bookmark" />
+
+            <ImageView
+                android:id="@+id/icon_send"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="24dp"
+                android:contentDescription="@string/icon_send"
+                android:src="@drawable/ic_send" />
+
+        </com.wx.touchregion.demo.ZoneLayout>
+
+        <TextView
+            android:id="@+id/tap_text"
+            style="@style/Text.Numeric"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:textColor="@color/accent_ink"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/Text.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0"
+                android:text="@string/legend_hit"
+                android:textColor="@color/hit" />
+
+            <TextView
+                style="@style/Text.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:letterSpacing="0"
+                android:text="@string/legend_miss"
+                android:textColor="@color/miss" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/Text.Note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/tap_hint" />
+
+        <LinearLayout
+            style="@style/Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/expand_switch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:minHeight="52dp"
+                android:text="@string/row_expand"
+                android:textColor="@color/text"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="0dp"
+                android:background="@color/border" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/Text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/row_margin" />
+
+                <TextView
+                    android:id="@+id/margin_text"
+                    style="@style/Text.Numeric"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/accent_ink"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/margin_seek"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:max="36" />
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/Text.Note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="@string/row_overlap" />
+
+    </LinearLayout>
+</ScrollView>

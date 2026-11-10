@@ -1,9 +1,67 @@
 <resources>
     <string name="app_name">TouchRegion</string>
-    <string name="title">TouchRegion 2.0</string>
-    <string name="intro">Both dots are only 24dp wide. With the switch on, each one also reacts to taps within 40dp around it. Accessibility guidance recommends a touch target of at least 48dp.</string>
-    <string name="expand_switch">Expand touch regions</string>
-    <string name="hide_b">Hide dot B</string>
-    <string name="show_b">Show dot B</string>
-    <string name="clicks">Dot A: %1$d / Dot B: %2$d</string>
+
+    <string name="back">返回</string>
+    <string name="theme_to_dark">切换到深色模式</string>
+    <string name="theme_to_light">切换到浅色模式</string>
+    <string name="view_source">查看源码</string>
+
+    <string name="home_examples">示例</string>
+    <string name="home_install">接入</string>
+    <string name="home_install_hint">JitPack · API 21+</string>
+    <string name="home_copy_dependency">复制依赖</string>
+    <string name="home_copied_dependency">已复制依赖</string>
+    <string name="home_license">Apache-2.0</string>
+    <string name="home_author">© venshine</string>
+
+    <!-- 首页 -->
+    <string name="home_eyebrow">ANDROID · TOUCH AREA</string>
+    <string name="home_title">图标很小，\n手指够得着</string>
+    <string name="home_desc">一个父 View 下的多个子 View 同时扩大点击区域。系统的 setTouchDelegate 只能设一个，这里用 TouchDelegateGroup 分发。</string>
+    <string name="home_preview">实时预览 · 点圆点附近试试</string>
+    <string name="home_preview_hint">橙色半透明区域就是扩大后的热区，它在呼吸</string>
+    <string name="home_examples_hint">3 个场景，均可交互</string>
+    <string name="clicks_format">点击 %1$d 次</string>
+
+    <string name="demo_zone">热区可视化</string>
+    <string name="demo_zone_desc">开关扩大、调范围，热区实时画出来</string>
+    <string name="demo_row">多个子 View</string>
+    <string name="demo_row_desc">一行小图标同时扩大，互不干扰</string>
+    <string name="demo_hide">隐藏与恢复</string>
+    <string name="demo_hide_desc">隐藏后不再命中，restore 还原</string>
+
+    <!-- 通用：图例 -->
+    <string name="legend_hit">绿色 = 命中</string>
+    <string name="legend_miss">灰色 = 未命中</string>
+    <string name="tap_hint">在方框内任意位置点按，圆圈出现的位置就是手指落点</string>
+
+    <!-- 热区可视化 -->
+    <string name="zone_expand">扩大点击区域</string>
+    <string name="zone_margin">扩大范围</string>
+    <string name="zone_count">目标被点击</string>
+
+    <!-- 多个子 View -->
+    <string name="row_expand">同时扩大 5 个图标</string>
+    <string name="row_margin">每个图标扩大</string>
+    <string name="row_overlap">图标间距 24dp：扩大超过 12dp 后相邻热区重叠，先添加的优先</string>
+    <string name="row_last_idle">最近点击：无</string>
+    <string name="row_last_on">最近点击：%1$s · 已选中</string>
+    <string name="row_last_off">最近点击：%1$s · 已取消</string>
+    <string name="icon_heart">喜欢</string>
+    <string name="icon_star">星标</string>
+    <string name="icon_bell">提醒</string>
+    <string name="icon_bookmark">收藏</string>
+    <string name="icon_send">发送</string>
+
+    <!-- 隐藏与恢复 -->
+    <string name="hide_expand">扩大</string>
+    <string name="hide_hide">隐藏</string>
+    <string name="hide_show">显示</string>
+    <string name="hide_restore">还原</string>
+    <string name="hide_state">热区：%1$s · 圆点：%2$s</string>
+    <string name="hide_zone_expanded">已扩大 24dp</string>
+    <string name="hide_zone_restored">已还原</string>
+    <string name="hide_view_visible">可见</string>
+    <string name="hide_view_hidden">已隐藏</string>
+    <string name="hide_hint">隐藏后点原来的位置不会命中；显示后热区自动回来</string>
 </resources>

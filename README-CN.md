@@ -8,11 +8,11 @@
 
 ## 截图
 
-| 浅色 | 深色 |
-|:---:|:---:|
-| <img src="screenshot/touch-region-light.png" width="240" alt="TouchRegion" /> | <img src="screenshot/touch-region-dark.png" width="240" alt="TouchRegion" /> |
+<img src="screenshot/demo.gif" width="300" alt="TouchRegion demo" />
 
-截图由 Robolectric 渲染。
+| 首页 | 深色模式 | 热区可视化 | 多个子 View | 隐藏与恢复 |
+|:---:|:---:|:---:|:---:|:---:|
+| <img src="screenshot/home.png" width="200" /> | <img src="screenshot/home_dark.png" width="200" /> | <img src="screenshot/zone.png" width="200" /> | <img src="screenshot/row.png" width="200" /> | <img src="screenshot/hide.png" width="200" /> |
 
 你需要它吗？
 --
@@ -59,7 +59,7 @@ implementation("com.github.venshine:TouchRegion:2.0.0")
 
 示例
 --
-包名仍是 `com.wx.touchregion`。[示例 App](sample) 用一个 `TouchRegion` 扩大两个 24dp 的小圆点，带一个关闭开关和一个隐藏圆点的按钮，支持浅色 / 深色主题。
+包名仍是 `com.wx.touchregion`。[示例 App](sample) 把扩大后的热区画出来：可调范围的热区可视化、一行图标同时扩大、隐藏与还原，支持浅色 / 深色主题。
 
 ##### Kotlin：
 ```kotlin
@@ -107,6 +107,14 @@ touchRegion.expandViewTouchRegion(button2, 500, 100, 500, 100);
 维护状态
 --
 尽力维护。2.0.0 的 Kotlin 重写尚未在真机上验证；行为由派发真实触摸事件的 Robolectric 单元测试覆盖。
+
+Credits
+--
+示例 App 打包了以下字体，均为 [SIL Open Font License 1.1](https://openfontlicense.org) 协议（协议原文见 [`sample/licenses/`](sample/licenses)）：
+* [Space Grotesk](https://github.com/floriankarsten/space-grotesk)：Copyright 2020 The Space Grotesk Project Authors
+* [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono)：Copyright 2020 The JetBrains Mono Project Authors
+
+库本身不包含任何字体。
 
 许可证
 --

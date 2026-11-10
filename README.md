@@ -8,11 +8,11 @@ Enlarge the touch and click area of small views. Written in Kotlin, no dependenc
 
 ## Screenshot
 
-| Light | Dark |
-|:---:|:---:|
-| <img src="screenshot/touch-region-light.png" width="240" alt="TouchRegion" /> | <img src="screenshot/touch-region-dark.png" width="240" alt="TouchRegion" /> |
+<img src="screenshot/demo.gif" width="300" alt="TouchRegion demo" />
 
-Screenshots are rendered by Robolectric.
+| Home | Dark mode | Hot zone | Multiple views | Hide & restore |
+|:---:|:---:|:---:|:---:|:---:|
+| <img src="screenshot/home.png" width="200" /> | <img src="screenshot/home_dark.png" width="200" /> | <img src="screenshot/zone.png" width="200" /> | <img src="screenshot/row.png" width="200" /> | <img src="screenshot/hide.png" width="200" /> |
 
 Do you need it?
 --
@@ -59,7 +59,7 @@ implementation("com.github.venshine:TouchRegion:2.0.0")
 
 Demo
 --
-The package name is still `com.wx.touchregion`. The [sample app](sample) enlarges two 24dp dots with one `TouchRegion`, with a switch to turn it off and a button to hide a dot; it supports light and dark themes.
+The package name is still `com.wx.touchregion`. The [sample app](sample) visualizes the enlarged hot zones: a zone viewer with an adjustable range, a row of icons enlarged together, and hiding / restoring a view; it supports light and dark themes.
 
 ##### Kotlin:
 ```kotlin
@@ -107,6 +107,14 @@ Migrating from 1.x
 Status
 --
 Maintained on a best-effort basis. Not yet verified on a real device with the 2.0.0 rewrite; the behavior is covered by Robolectric unit tests that dispatch real touch events.
+
+Credits
+--
+The sample app bundles these fonts, both licensed under the [SIL Open Font License 1.1](https://openfontlicense.org) (license texts in [`sample/licenses/`](sample/licenses)):
+* [Space Grotesk](https://github.com/floriankarsten/space-grotesk): Copyright 2020 The Space Grotesk Project Authors
+* [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono): Copyright 2020 The JetBrains Mono Project Authors
+
+The library itself bundles no fonts.
 
 License
 --

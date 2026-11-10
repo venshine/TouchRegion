@@ -6,6 +6,8 @@
 
 扩大小控件的触摸和点击区域。Kotlin 编写，除 Kotlin 标准库外没有其他依赖。
 
+[**下载示例 APK**](https://github.com/venshine/TouchRegion/releases/download/2.0.0/TouchRegion-sample-2.0.0.apk)
+
 ## 截图
 
 <img src="screenshot/demo.gif" width="300" alt="TouchRegion demo" />

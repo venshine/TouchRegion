@@ -6,6 +6,8 @@ English | [简体中文](README-CN.md)
 
 Enlarge the touch and click area of small views. Written in Kotlin, no dependencies besides the Kotlin standard library.
 
+[**Download the sample APK**](https://github.com/venshine/TouchRegion/releases/download/2.0.0/TouchRegion-sample-2.0.0.apk)
+
 ## Screenshot
 
 <img src="screenshot/demo.gif" width="300" alt="TouchRegion demo" />

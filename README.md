@@ -108,7 +108,7 @@ Migrating from 1.x
 
 Status
 --
-Maintained on a best-effort basis. Not yet verified on a real device with the 2.0.0 rewrite; the behavior is covered by Robolectric unit tests that dispatch real touch events.
+Maintained on a best-effort basis. The 2.0.0 rewrite has been checked on a real device running Android 17, and Robolectric unit tests dispatch real touch events.
 
 Credits
 --

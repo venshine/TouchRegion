@@ -108,7 +108,7 @@ touchRegion.expandViewTouchRegion(button2, 500, 100, 500, 100);
 
 维护状态
 --
-尽力维护。2.0.0 的 Kotlin 重写尚未在真机上验证；行为由派发真实触摸事件的 Robolectric 单元测试覆盖。
+尽力维护。2.0.0 的 Kotlin 重写已在 Android 17 真机上检查，Robolectric 单元测试会派发真实的触摸事件。
 
 Credits
 --
